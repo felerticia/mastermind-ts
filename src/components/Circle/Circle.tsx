@@ -1,11 +1,11 @@
 import "./Circle.css";
 
 type CircleProps = {
-  color: string;
+  color?: string;
 };
 
 const Circle = ({ color }: CircleProps) => {
-  return <div className={`Circle ${color}`} />;
+  return <div className={`Circle ${color || "transparent"}`} />;
 };
 
 export default Circle;
