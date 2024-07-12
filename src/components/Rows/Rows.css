@@ -1,0 +1,16 @@
+.Rows {
+  grid-area: Rows;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Row {
+  display: grid;
+  grid-template-columns: 16% 60% 12%;
+  height: 60px;
+  justify-items: center;
+  align-items: center;
+  gap: 2%;
+  cursor: not-allowed;
+  pointer-events: none;
+}
