@@ -8,3 +8,5 @@ export const color_options = [
   "red",
   "purple",
 ];
+
+export const tries = 10;
