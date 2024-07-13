@@ -1,4 +1,7 @@
-export type Action = { type: string };
+export enum ActionType {
+  SET_COLOR = "SET_COLOR",
+}
+export type Action = { type: ActionType.SET_COLOR; payload: string };
 
 export enum GameState {
   Ongoing = "Ongoing",

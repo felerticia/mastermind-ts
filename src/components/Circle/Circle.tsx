@@ -3,11 +3,15 @@ import "./Circle.css";
 type CircleProps = {
   color?: string;
   className?: string;
+  onClick: () => void;
 };
 
-const Circle = ({ color, className }: CircleProps) => {
+const Circle = ({ color, className, onClick }: CircleProps) => {
   return (
-    <div className={`Circle  ${color || "transparent"} ${className || ""}`} />
+    <div
+      className={`Circle  ${color || "transparent"} ${className || ""}`}
+      onClick={onClick}
+    />
   );
 };
 
