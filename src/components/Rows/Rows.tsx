@@ -5,7 +5,7 @@ import "./Rows.css";
 
 const Rows = () => {
   const {
-    appState: { currentRow, rows },
+    appState: { currentRow, rows, hints },
     dispatch,
   } = useAppContext();
 
@@ -37,10 +37,10 @@ const Rows = () => {
             />
           </div>
           <div className="hints">
-            <Circle />
-            <Circle />
-            <Circle />
-            <Circle />
+            <Circle color={hints[i][0]} />
+            <Circle color={hints[i][1]} />
+            <Circle color={hints[i][2]} />
+            <Circle color={hints[i][3]} />
           </div>
         </div>
       ))}

@@ -13,3 +13,28 @@ export const initGameState = () => ({
     ),
   gameState: GameState.Ongoing,
 });
+
+export const getHints = (secret: string[], row: string[]) => {
+  const secretCopy = [...secret];
+  const rowCopy = [...row];
+  const hints: string[] = [];
+
+  for (let i = 3; i >= 0; i--) {
+    if (secretCopy[i] === rowCopy[i]) {
+      hints.push("black");
+      secretCopy.splice(i, 1);
+      rowCopy.splice(i, 1);
+    }
+  }
+
+  for (let i = secretCopy.length; i >= 0; i--) {
+    const j = rowCopy.indexOf(secretCopy[i]);
+    if (j !== -1) {
+      hints.push("white");
+      secretCopy.splice(i, 1);
+      rowCopy.splice(j, 1);
+    }
+  }
+
+  return new Array(4).fill("").map((_, i) => hints[i] || "");
+};

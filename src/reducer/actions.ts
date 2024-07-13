@@ -13,3 +13,10 @@ export const setSlot = (columnNumber: number): Action => {
     payload: columnNumber,
   };
 };
+
+export const checkRow = (hints: string[]): Action => {
+  return {
+    type: ActionType.CHECK_ROW,
+    payload: hints,
+  };
+};
