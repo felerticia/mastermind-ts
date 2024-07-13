@@ -27,3 +27,9 @@ export const setGameState = (gameState: GameState): Action => {
     payload: gameState,
   };
 };
+
+export const newGame = (): Action => {
+  return {
+    type: ActionType.NEW_GAME,
+  };
+};

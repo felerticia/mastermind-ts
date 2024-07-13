@@ -8,6 +8,7 @@ import Secret from "./components/Secret/Secret";
 import AppContext from "./contexts/Context";
 import { checkGameState, initGameState } from "./helper/helper";
 import { setGameState } from "./reducer/actions";
+import GameEnds from "./components/GameEnds/GameEnds";
 
 function App() {
   const [appState, dispatch] = useReducer(reducer, initGameState());
@@ -30,6 +31,7 @@ function App() {
           <Rows />
           <Colors />
           <Buttons />
+          <GameEnds />
         </div>
       </div>
     </AppContext.Provider>

@@ -8,7 +8,8 @@ const Check = () => {
     dispatch,
   } = useAppContext();
 
-  const isRowComplete = rows[currentRow].every((x) => x);
+  const isRowComplete =
+    currentRow === 10 ? false : rows[currentRow].every((x) => x);
 
   const onCheck = () => {
     const hints = getHints(secret, rows[currentRow]);
