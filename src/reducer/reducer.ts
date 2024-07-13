@@ -28,6 +28,13 @@ export const reducer = (state: State, action: Action): State => {
       };
     }
 
+    case ActionType.SET_GAME_STATE: {
+      return {
+        ...state,
+        gameState: action.payload,
+      };
+    }
+
     default:
       return state;
   }

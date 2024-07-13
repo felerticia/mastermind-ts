@@ -38,3 +38,13 @@ export const getHints = (secret: string[], row: string[]) => {
 
   return new Array(4).fill("").map((_, i) => hints[i] || "");
 };
+
+export const checkGameState = (hints: string[][], row: number) => {
+  if (row === -1) return GameState.Ongoing;
+
+  if (row === 9 && hints[row].some((x) => x !== "black")) return GameState.Lost;
+
+  if (hints[row].every((x) => x === "black")) return GameState.Won;
+
+  return GameState.Ongoing;
+};

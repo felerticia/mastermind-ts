@@ -1,4 +1,4 @@
-import { Action, ActionType } from "./types";
+import { Action, ActionType, GameState } from "./types";
 
 export const setColor = (color: string): Action => {
   return {
@@ -18,5 +18,12 @@ export const checkRow = (hints: string[]): Action => {
   return {
     type: ActionType.CHECK_ROW,
     payload: hints,
+  };
+};
+
+export const setGameState = (gameState: GameState): Action => {
+  return {
+    type: ActionType.SET_GAME_STATE,
+    payload: gameState,
   };
 };
