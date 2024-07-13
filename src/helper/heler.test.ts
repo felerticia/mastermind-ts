@@ -1,6 +1,6 @@
 import { color_options, tries } from "../constants";
 import { GameState } from "../reducer/types";
-import { initGameState } from "./helper";
+import { getHints, initGameState } from "./helper";
 
 describe("initGameState", () => {
   it("should initialize currentRow to 0", () => {
@@ -46,5 +46,56 @@ describe("initGameState", () => {
     const state1 = initGameState();
     const state2 = initGameState();
     expect(state1.secret).not.toEqual(state2.secret);
+  });
+});
+
+describe("getHints", () => {
+  it("should return 4 blacks when secret and rows are the same", () => {
+    const secret = ["red", "blue", "green", "green"];
+    const row = ["red", "blue", "green", "green"];
+    const result = ["black", "black", "black", "black"];
+    expect(getHints(secret, row)).toEqual(result);
+  });
+
+  it("should return 4 whites when secret and rows are the same but not in correct order", () => {
+    const secret = ["red", "blue", "green", "green"];
+    const row = ["green", "green", "blue", "red"];
+    const result = ["white", "white", "white", "white"];
+    expect(getHints(secret, row)).toEqual(result);
+  });
+
+  it("should return one black and one white", () => {
+    const secret = ["red", "blue", "green", "green"];
+    const row = ["red", "orange", "blue", "orange"];
+    const result = ["black", "white", "", ""];
+    expect(getHints(secret, row)).toEqual(result);
+  });
+
+  it("should return two blacks and two whites for a mix of correct and incorrect positions", () => {
+    const secret = ["red", "blue", "green", "green"];
+    const row = ["green", "blue", "green", "red"];
+    const result = ["black", "black", "white", "white"];
+    expect(getHints(secret, row)).toEqual(result);
+  });
+
+  it("should return four whites when all colors are correct but in different positions", () => {
+    const secret = ["red", "blue", "green", "yellow"];
+    const row = ["blue", "yellow", "red", "green"];
+    const result = ["white", "white", "white", "white"];
+    expect(getHints(secret, row)).toEqual(result);
+  });
+
+  it("should return an empty array when no colors match", () => {
+    const secret = ["red", "blue", "green", "yellow"];
+    const row = ["purple", "orange", "pink", "brown"];
+    const result = ["", "", "", ""];
+    expect(getHints(secret, row)).toEqual(result);
+  });
+
+  it("should handle repeated colors correctly", () => {
+    const secret = ["red", "blue", "blue", "green"];
+    const row = ["blue", "blue", "red", "green"];
+    const result = ["black", "black", "white", "white"];
+    expect(getHints(secret, row)).toEqual(result);
   });
 });
