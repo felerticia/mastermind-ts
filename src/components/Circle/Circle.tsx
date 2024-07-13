@@ -3,7 +3,7 @@ import "./Circle.css";
 type CircleProps = {
   color?: string;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Circle = ({ color, className, onClick }: CircleProps) => {
